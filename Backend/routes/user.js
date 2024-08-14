@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
         });
     }
     const user = await User.create({ name, email, password });
-    const token = jwt.sign({ userId: user._id }, "priyam", { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, "jwtsecret", { expiresIn: '1h' });
     res.cookie('authToken', token);
     res.json({
         message: "User created successfully"
